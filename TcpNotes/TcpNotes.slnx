@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/TcpNotesDemo/">
+    <Project Path="TcpNotesDemo/NotesClient/NotesClient.csproj" />
+    <Project Path="TcpNotesDemo/NotesServer/NotesServer.csproj" />
+    <Project Path="TcpNotesDemo/TcpNotes.Tests/TcpNotes.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,109 @@
+<mxfile host="Electron" modified="2026-09-28T11:00:00.000Z" version="31.5.3">
+  <diagram id="sequence-diagram" name="Обмен заметками">
+    <mxGraphModel dx="1900" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Сценарий: два клиента добавляют заметки и получают общий список" style="text;html=1;align=center;verticalAlign=middle;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="20" width="1180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="Клиент 1&lt;br/&gt;NotesClient" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="100" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="server" value="NotesServer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="100" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="processor" value="CommandProcessor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="100" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="repo" value="NotesRepository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="100" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="Клиент 2&lt;br/&gt;NotesClient" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="100" width="230" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="l1" style="edgeStyle=none;html=1;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="c1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="205" y="1290" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="l2" style="edgeStyle=none;html=1;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="server">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="1290" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="l3" style="edgeStyle=none;html=1;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="processor">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="1290" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="l4" style="edgeStyle=none;html=1;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="repo">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1320" y="1290" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="l5" style="edgeStyle=none;html=1;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="c2">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1695" y="1290" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m1" value="ConnectAsync(): TCP connect" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="205" y="240" as="sourcePoint"/><mxPoint x="565" y="240" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r1" value="соединение установлено" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="285" as="sourcePoint"/><mxPoint x="205" y="285" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="ConnectAsync(): TCP connect" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1695" y="340" as="sourcePoint"/><mxPoint x="565" y="340" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r2" value="соединение установлено" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="385" as="sourcePoint"/><mxPoint x="1695" y="385" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="AddNoteAsync(&amp;quot;Первая&amp;quot;) → &amp;quot;ADD Первая&amp;quot;" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="205" y="455" as="sourcePoint"/><mxPoint x="565" y="455" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="Process(&amp;quot;ADD Первая&amp;quot;)" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="505" as="sourcePoint"/><mxPoint x="940" y="505" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="Add(&amp;quot;Первая&amp;quot;)" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="555" as="sourcePoint"/><mxPoint x="1320" y="555" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r3" value="1" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1320" y="600" as="sourcePoint"/><mxPoint x="940" y="600" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r4" value="&amp;quot;OK ... Всего заметок: 1.&amp;quot;" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="645" as="sourcePoint"/><mxPoint x="565" y="645" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r5" value="OK ... 1" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="690" as="sourcePoint"/><mxPoint x="205" y="690" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="AddNoteAsync(&amp;quot;Вторая&amp;quot;) → &amp;quot;ADD Вторая&amp;quot;" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1695" y="760" as="sourcePoint"/><mxPoint x="565" y="760" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="Process(&amp;quot;ADD Вторая&amp;quot;)" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="810" as="sourcePoint"/><mxPoint x="940" y="810" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="Add(&amp;quot;Вторая&amp;quot;)" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="860" as="sourcePoint"/><mxPoint x="1320" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r6" value="2" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1320" y="900" as="sourcePoint"/><mxPoint x="940" y="900" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r6b" value="&amp;quot;OK ... Всего заметок: 2.&amp;quot;" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="935" as="sourcePoint"/><mxPoint x="565" y="935" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r7" value="OK ... 2" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="970" as="sourcePoint"/><mxPoint x="1695" y="970" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="ListNotesAsync() → &amp;quot;LIST&amp;quot;" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="205" y="1030" as="sourcePoint"/><mxPoint x="565" y="1030" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="Process(&amp;quot;LIST&amp;quot;)" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="1075" as="sourcePoint"/><mxPoint x="940" y="1075" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="GetAll()" style="edgeStyle=none;html=1;endArrow=block;fontSize=15;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="1120" as="sourcePoint"/><mxPoint x="1320" y="1120" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r8" value="[&amp;quot;Первая&amp;quot;, &amp;quot;Вторая&amp;quot;]" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1320" y="1165" as="sourcePoint"/><mxPoint x="940" y="1165" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r9" value="NOTES 1. Первая | 2. Вторая" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="940" y="1210" as="sourcePoint"/><mxPoint x="565" y="1210" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="r10" value="NOTES 1. Первая | 2. Вторая" style="edgeStyle=none;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="565" y="1255" as="sourcePoint"/><mxPoint x="205" y="1255" as="targetPoint"/></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

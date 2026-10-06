@@ -1,0 +1,113 @@
+<mxfile host="Electron" modified="2026-09-28T11:00:00.000Z" version="31.5.3">
+  <diagram id="class-diagram" name="Классы TcpNotes">
+    <mxGraphModel dx="2100" dy="1650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1650" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Диаграмма классов TcpNotes (.NET 10)" style="text;html=1;align=center;verticalAlign=middle;fontSize=26;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="30" width="720" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="server" value="&lt;b&gt;&amp;laquo;sealed&amp;raquo; NotesServer&lt;/b&gt;&lt;hr/&gt;+ Address: IPAddress { get; }&lt;br/&gt;+ Port: int { get; }&lt;hr/&gt;+ NotesServer(address: IPAddress, port: int)&lt;br/&gt;+ RunAsync(cancellationToken: CancellationToken = default): Task&lt;br/&gt;+ DisposeAsync(): ValueTask" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="600" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="processor" value="&lt;b&gt;&amp;laquo;sealed&amp;raquo; CommandProcessor&lt;/b&gt;&lt;hr/&gt;+ CommandProcessor(repository: NotesRepository)&lt;br/&gt;+ Process(command: string): string" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="790" y="150" width="500" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="repository" value="&lt;b&gt;&amp;laquo;sealed&amp;raquo; NotesRepository&lt;/b&gt;&lt;hr/&gt;+ Count: int { get; }&lt;hr/&gt;+ NotesRepository()&lt;br/&gt;+ Add(text: string): int&lt;br/&gt;+ GetAll(): IReadOnlyList&amp;lt;string&amp;gt;" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="150" width="500" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="&lt;b&gt;&amp;laquo;sealed&amp;raquo; NotesClient&lt;/b&gt;&lt;hr/&gt;+ Host: string { get; }&lt;br/&gt;+ Port: int { get; }&lt;br/&gt;+ IsConnected: bool { get; }&lt;hr/&gt;+ NotesClient(host: string, port: int)&lt;br/&gt;+ ConnectAsync(cancellationToken: CancellationToken = default): Task&lt;br/&gt;+ AddNoteAsync(text: string, cancellationToken: CancellationToken = default): Task&amp;lt;string&amp;gt;&lt;br/&gt;+ ListNotesAsync(cancellationToken: CancellationToken = default): Task&amp;lt;string&amp;gt;&lt;br/&gt;+ SendCommandAsync(command: string, cancellationToken: CancellationToken = default): Task&amp;lt;string&amp;gt;&lt;br/&gt;+ DisposeAsync(): ValueTask" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="520" width="820" height="370" as="geometry"/>
+        </mxCell>
+        <mxCell id="async" value="&lt;b&gt;&amp;laquo;interface&amp;raquo;&lt;br/&gt;IAsyncDisposable&lt;/b&gt;&lt;hr/&gt;+ DisposeAsync(): ValueTask" style="rounded=1;fontStyle=2;fillColor=#f5f5f5;strokeColor=#666666;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="690" width="360" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="tcpListener" value="&lt;b&gt;TcpListener&lt;/b&gt;&lt;br/&gt;&amp;laquo;.NET&amp;raquo;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="190" y="470" width="250" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="tcpClient" value="&lt;b&gt;TcpClient&lt;/b&gt;&lt;br/&gt;&amp;laquo;.NET&amp;raquo;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="660" width="250" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="serverProgram" value="&lt;b&gt;&amp;laquo;internal static&amp;raquo; TcpNotes.Server.Program&lt;/b&gt;&lt;hr/&gt;- Main(): Task" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="990" width="570" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="clientProgram" value="&lt;b&gt;&amp;laquo;internal static&amp;raquo; TcpNotes.Client.Program&lt;/b&gt;&lt;hr/&gt;- Main(): Task" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;html=1;whiteSpace=wrap;fontSize=15;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="990" width="570" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamondThin;startFill=1;endArrow=open;fontSize=14;" edge="1" parent="1" source="server" target="processor">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamondThin;startFill=0;endArrow=open;fontSize=14;" edge="1" parent="1" source="processor" target="repository">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;dashed=1;fontSize=14;" edge="1" parent="1" source="server" target="async">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;dashed=1;fontSize=14;" edge="1" parent="1" source="client" target="async">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamondThin;startFill=1;endArrow=open;fontSize=14;" edge="1" parent="1" source="server" target="tcpListener">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamondThin;startFill=1;endArrow=open;fontSize=14;" edge="1" parent="1" source="client" target="tcpClient">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="создаёт" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1" source="serverProgram" target="server">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="создаёт" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;dashed=1;fontSize=14;" edge="1" parent="1" source="clientProgram" target="client">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="processorTests" value="&lt;b&gt;&amp;laquo;sealed, tests&amp;raquo; CommandProcessorTests&lt;/b&gt;&lt;hr/&gt;+ CommandProcessorTests()&lt;br/&gt;+ Process_AddAndList_ReturnsOrderedNotes(): void&lt;br/&gt;+ Process_InvalidCommands_ReturnsErrors(): void" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;html=1;whiteSpace=wrap;fontSize=14;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1280" width="820" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="networkTests" value="&lt;b&gt;&amp;laquo;sealed, tests&amp;raquo; NetworkIntegrationTests&lt;/b&gt;&lt;hr/&gt;+ NetworkIntegrationTests()&lt;br/&gt;+ TwoClients_AddNotes_BothSeeSharedList(): Task" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;html=1;whiteSpace=wrap;fontSize=14;align=left;verticalAlign=top;spacingTop=10;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="1280" width="750" height="165" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="проверяет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;dashed=1;fontSize=14;exitX=0.93;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="processorTests" target="processor">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="832" y="1200"/>
+              <mxPoint x="40" y="1200"/>
+              <mxPoint x="40" y="440"/>
+              <mxPoint x="1040" y="440"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="проверяет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;dashed=1;fontSize=14;exitX=0.98;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="processorTests" target="repository">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="874" y="1200"/>
+              <mxPoint x="2060" y="1200"/>
+              <mxPoint x="2060" y="440"/>
+              <mxPoint x="1760" y="440"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="проверяет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;dashed=1;fontSize=14;exitX=0.05;exitY=0;exitDx=0;exitDy=0;entryX=0.4;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="networkTests" target="server">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1197" y="1200"/>
+              <mxPoint x="40" y="1200"/>
+              <mxPoint x="40" y="440"/>
+              <mxPoint x="310" y="440"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="проверяет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;dashed=1;fontSize=14;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="networkTests" target="client">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1535" y="1200"/>
+              <mxPoint x="2060" y="1200"/>
+              <mxPoint x="2060" y="940"/>
+              <mxPoint x="1060" y="940"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Обозначения связей: ◆— композиция; ◇— агрегация; ▷ пунктиром — реализация интерфейса; стрелка пунктиром — создание/проверка." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=15;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="1010" width="570" height="90" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
